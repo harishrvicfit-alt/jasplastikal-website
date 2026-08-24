@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 
-export default function robots(): MetadataRoute.Robots {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000";
 
-  return { rules: { userAgent: "*", allow: "/" }, sitemap: `${baseUrl}/sitemap.xml` };
+  return [{ url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 }];
 }

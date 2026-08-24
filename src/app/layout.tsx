@@ -13,7 +13,10 @@ export const metadata: Metadata = {
   title: { default: "JAS PlastikAL | PVC i AL sistemi", template: "%s | JAS PlastikAL" },
   description: "Proizvodnja i ugradnja PVC stolarije, AL bravarije, vrata, kliznih sistema, staklenih fasada, zimskih vrtova, roletni i garažnih vrata.",
   keywords: ["PVC stolarija", "AL bravarija", "Maglaj", "prozori", "ulazna vrata", "zimski vrtovi", "staklene fasade"],
+  alternates: { canonical: "/" },
   openGraph: { title: "JAS PlastikAL — prostor počinje dobrim okvirom", description: "Precizna proizvodnja i pouzdana ugradnja PVC i AL sistema.", type: "website", locale: "bs_BA", images: [{ url: "/images/Zimski_vrt.jpg", width: 1437, height: 1078, alt: "JAS PlastikAL zimski vrt" }] },
+  twitter: { card: "summary_large_image", title: "JAS PlastikAL — prostor počinje dobrim okvirom", description: "Precizna proizvodnja i pouzdana ugradnja PVC i AL sistema.", images: ["/images/Zimski_vrt.jpg"] },
+  robots: { index: true, follow: true },
   icons: { icon: "/images/logojas.png", apple: "/images/logojas.png" },
 };
 
