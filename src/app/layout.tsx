@@ -23,5 +23,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#111513" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="bs" className={`${manrope.variable} ${spaceGrotesk.variable}`}><body>{children}</body></html>;
+  return <html lang="bs" className={`${manrope.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth"><body>{children}</body></html>;
 }
