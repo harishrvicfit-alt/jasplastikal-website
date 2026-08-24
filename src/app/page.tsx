@@ -1,69 +1,56 @@
 import Image from "next/image";
+import { ArrowDownRight, ArrowRight, Award, Building2, Check, ChevronRight, Download, Globe2, Mail, MapPin, Menu, Phone, ShieldCheck, Sparkles, ThermometerSun, X } from "lucide-react";
+
+const productSystems = [
+  { name: "IDEAL 4000", group: "PVC prozori", image: "/images/stolarija_ideal_4000.jpg", value: "Uw 1,3", specs: ["5 komora", "70 mm ugradnje", "2 zone dihtovanja", "Dvoslojno termo staklo"] },
+  { name: "IDEAL NEO AD", group: "PVC prozori", image: "/images/stolarija_ideal_neo_ad.png", value: "Uw 1,0", specs: ["6 komora", "76 mm ugradnje", "2 zone dihtovanja", "Troslojno termo staklo"] },
+  { name: "IDEAL NEO MD", group: "PVC prozori", image: "/images/stolarija_ideal_neo_md.png", value: "Uw 0,86", specs: ["6 komora", "Ug stakla 0,5 W/m²K", "Troslojno ostakljenje", "ALU obloge dostupne"] },
+  { name: "IDEAL 8000", group: "PVC prozori", image: "/images/stolarija_ideal_8000.jpg", value: "Uw 0,83", specs: ["6 komora", "85 mm ugradnje", "3 zone dihtovanja", "Troslojno termo staklo"] },
+  { name: "EMERUS PS50", group: "AL bravarija", image: "/images/PS50.png", value: "50 mm", specs: ["Bez termičkog mosta", "Prozori i vrata", "RAL paleta", "Eloksirani EV1 profil"] },
+  { name: "EMERUS PR65tt", group: "AL bravarija", image: "/images/PR65tt.png", value: "Uw 1,6", specs: ["Sa termičkim mostom", "65 mm ugradnje", "2 zone dihtovanja", "Dvoslojno termo staklo"] },
+  { name: "EMERUS PE85tt", group: "AL bravarija", image: "/images/PE85tt.png", value: "Uw 1,1", specs: ["Sa termičkim mostom", "77 mm ugradnje", "3 zone dihtovanja", "Troslojno termo staklo"] },
+];
+
+const offer = [
+  { number: "01", title: "PVC stolarija", text: "Petokomorni i šestokomorni aluplast profili, dvoslojno ili troslojno termoizolaciono staklo, argon i LOW-e premaz za visoku energetsku efikasnost.", image: "/images/stolarija_ideal_8000.jpg" },
+  { number: "02", title: "AL bravarija", text: "Elegantni i dugotrajni EMERUS sistemi sa ili bez prekinutog termičkog mosta, u širokoj RAL paleti ili eloksiranoj EV1 izvedbi.", image: "/images/PE85tt.png" },
+  { number: "03", title: "Ulazna vrata", text: "PVC i AL ulazna vrata po želji kupca, sa standardnim ili skrivenim krilom i prvoklasnim G-U sigurnosnim okovima.", image: "/images/vrata_emerus_pe85n.png" },
+  { number: "04", title: "Klizni sistemi", text: "PVC smart-slide, AL podizno-klizni i višekrilni sistemi za maksimalno otvaranje prostora, terase i balkone.", image: "/images/pvc_smart-slide.jpg" },
+  { number: "05", title: "Staklene fasade", text: "Kontinuirane EMERUS E50K fasade za velike staklene površine, snažnu statiku, vizuelnu lakoću i dobru termoizolaciju.", image: "/images/Staklene_fasade.png" },
+  { number: "06", title: "Zimski vrtovi", text: "FEAL namjenski profili, mnogo prirodnog svjetla i rješenja prilagođena tipu ostakljenja i načinu pristupa vrtu.", image: "/images/Zimski_vrt.jpg" },
+  { number: "07", title: "AL roletne i komarnici", text: "ALUPROF i EXTE–ELITE roletne u vanjskoj, podfasadnoj ili nadgradnoj izvedbi, uz plisse, rolo i fiksne komarnike.", image: "/images/roletne.jpg" },
+  { number: "08", title: "Garažna vrata", text: "Sekciona garažna vrata u različitim bojama, formama i dezenima, sa prvoklasnim SOMFY elektromotornim pogonom.", image: "/images/garazna_vrata.jpg" },
+  { number: "09", title: "AL konstrukcije i zavarivanje", text: "Dugotrajniji i estetski kvalitetniji spojevi za aluminijske konstrukcije, kapije i posebne elemente — i za treća lica.", image: "/images/al_podizno_klizna_pk150tt.png" },
+];
+
+const doors = [["IDEAL 4000", "PVC · 5 komora · 70 mm · standardno vidno krilo"], ["IDEAL 7000", "PVC · 6 komora · 85 mm · standardno ili skriveno krilo"], ["EMERUS PE85N", "AL · 3 zone dihtovanja · 85 mm · standardno ili skriveno krilo"]];
+const sliders = [["PVC smart-slide", "140 mm · dvoslojno/troslojno staklo · Uw do 1,0 W/m²K"], ["AL PK150tt", "Podizno-klizni sistem sa PTM · 150 mm"], ["AL E650S", "Bez PTM · 2–3 staze · 2–6 krila"], ["AL E65Stt", "Sa PTM · 2–3 staze · 2–6 krila"]];
+const partners = [["aluplast", "/images/aluplast.png", "https://www.aluplast.net/eng-int/"], ["G-U", "/images/GU.png", "https://www.g-u.com/en/HR.html"], ["FEAL", "/images/feal.png", "https://feal.ba/en/"], ["EMINAL", "/images/eminal.png", "https://www.eminal.ba/"], ["ALUMIL", "/images/alumil.png", "https://www.alumil.com/"], ["Termoglas", "/images/termoglas.png", "https://www.termoglas.ba/"], ["Pavković paneli", "/images/pavkov.png", "https://www.pavkovic-paneli.com/"]];
+const markets = ["Bosna i Hercegovina", "Hrvatska", "Austrija", "Njemačka", "Luksemburg", "Holandija"];
+
+function BrandMark({ light = false }: { light?: boolean }) { return <a href="#top" className={`brand ${light ? "brand-light" : ""}`} aria-label="JAS PlastikAL — početna"><Image src="/images/logojas.png" alt="JAS PlastikAL" width={160} height={92} priority /></a>; }
+function SectionLabel({ children }: { children: React.ReactNode }) { return <p className="section-label"><span />{children}</p>; }
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  const localBusinessSchema = { "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", name: "JAS PlastikAL", foundingDate: "2017", url: "https://www.jasplastikal.com/", email: "info@jasplastikal.com", telephone: "+38761478480", address: { "@type": "PostalAddress", streetAddress: "Bosanska bb", postalCode: "74250", addressLocality: "Maglaj", addressCountry: "BA" }, areaServed: markets };
+  return <main id="top">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+    <header className="site-header"><BrandMark /><nav className="desktop-nav" aria-label="Glavna navigacija"><a href="#o-nama">O nama</a><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="#partneri">Partneri</a></nav><a className="header-cta" href="#kontakt">Zatraži ponudu <ArrowDownRight size={18} /></a><details className="mobile-menu"><summary aria-label="Otvori navigaciju"><Menu size={22} /><X className="close-icon" size={22} /></summary><nav aria-label="Mobilna navigacija"><a href="#o-nama">O nama</a><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="#partneri">Partneri</a><a href="#kontakt">Kontakt</a></nav></details></header>
+
+    <section className="hero" aria-labelledby="hero-title"><div className="hero-grid" aria-hidden="true" /><div className="hero-copy"><p className="eyebrow"><Sparkles size={15} /> Proizvodnja i ugradnja od 2017.</p><h1 id="hero-title">Prostor počinje<br />dobrim <em>okvirom.</em></h1><p className="hero-lead">PVC i aluminijski sistemi projektovani da traju — od precizne proizvodnje u Maglaju do čiste, pouzdane montaže širom Evrope.</p><div className="hero-actions"><a className="button button-primary" href="#ponuda">Istraži ponudu <ArrowRight size={19} /></a><a className="button button-ghost" href="/JASPlastikAL-katalog-2024.pdf" download>Preuzmi katalog <Download size={18} /></a></div><div className="hero-proof" aria-label="Ključne prednosti"><div><strong>9+</strong><span>grupa proizvoda</span></div><div><strong>6</strong><span>evropskih tržišta</span></div><div><strong>CE</strong><span>certificirana proizvodnja</span></div></div></div><div className="hero-visual"><Image src="/images/Zimski_vrt.jpg" alt="JAS PlastikAL zimski vrt sa aluminijskom konstrukcijom" fill sizes="(max-width: 900px) 100vw, 50vw" loading="eager" /><div className="hero-image-shade" /><div className="material-card"><span>Materijal / 01</span><strong>ALUMINIJ</strong><small>Dugotrajnost. Preciznost. Sloboda forme.</small></div><div className="hero-badge"><ThermometerSun size={20} /><span>Energetska<br /><strong>efikasnost</strong></span></div></div><a className="scroll-cue" href="#o-nama"><span>Skrolaj za više</span><ArrowDownRight size={18} /></a></section>
+
+    <section className="statement" id="o-nama"><SectionLabel>Ko smo mi</SectionLabel><div className="statement-grid"><h2>Kvalitet ne poznaje granice.</h2><div><p>JAS PlastikAL je specijalizirano društvo za proizvodnju i ugradnju PVC stolarije, AL bravarije, garažnih vrata, roletni, ograda, kapija, zimskih vrtova i aluminijskih konstrukcija.</p><p>Predan i temeljit rad pretvaramo u proizvode koji kupcima donose sigurnost, energetsku efikasnost i čist vizuelni identitet prostora.</p><a className="text-link" href="#kontakt">Razgovarajmo o projektu <ArrowRight size={17} /></a></div></div><div className="trust-strip"><div className="trust-intro"><Globe2 size={24} /><span>Povjerenje kupaca<br />širom Evrope</span></div><div className="markets">{markets.map((market) => <span key={market}>{market}</span>)}</div></div></section>
+
+    <section className="offer-section" id="ponuda"><div className="section-heading inverse"><div><SectionLabel>Kompletna ponuda</SectionLabel><h2>Jedan partner.<br /><em>Cijeli objekat.</em></h2></div><p>Od prvog mjerenja do finalne montaže, biramo provjerene sisteme i prilagođavamo svaki detalj vašem projektu.</p></div><div className="offer-grid">{offer.map((item) => <article className="offer-card" key={item.title}><div className="offer-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" /></div><div className="offer-card-top"><span>{item.number}</span><ArrowDownRight size={22} /></div><h3>{item.title}</h3><p>{item.text}</p></article>)}</div><div className="extra-offer"><span>+ Dodatno izrađujemo</span><p>Balkonske i dvorišne ograde · kapije i motore za kapije · zavjese · alu bond · natstrešnice · konstrukcije predulaza · prozorske klupice · AL grilje</p></div></section>
+
+    <section className="systems-section" id="sistemi"><div className="section-heading"><div><SectionLabel>Provjereni sistemi</SectionLabel><h2>Brojevi koji<br /><em>čuvaju komfor.</em></h2></div><p>Usporedite reprezentativne PVC i AL sisteme. Sve izvedbe dostupne su u pripadajućim dekorima, RAL bojama ili sa ALU oblogama, zavisno od sistema.</p></div><div className="system-grid">{productSystems.map((system, index) => <article className={`system-card ${index === 3 ? "featured" : ""}`} key={system.name}><div className="system-meta"><span>{system.group}</span><strong>{system.value}<small>{system.value.includes("Uw") ? " W/m²K" : ""}</small></strong></div><div className="system-image"><Image src={system.image} alt={`${system.name} profil`} fill sizes="(max-width: 700px) 100vw, 33vw" /></div><h3>{system.name}</h3><ul>{system.specs.map((spec) => <li key={spec}><Check size={14} />{spec}</li>)}</ul></article>)}</div><div className="detail-lists"><div><p className="detail-kicker">Ulazna vrata</p><h3>Sigurnost u prvom planu.</h3>{doors.map(([name, detail]) => <div className="detail-row" key={name}><strong>{name}</strong><span>{detail}</span><ChevronRight size={18} /></div>)}</div><div><p className="detail-kicker">Klizni sistemi</p><h3>Više svjetla. Više prostora.</h3>{sliders.map(([name, detail]) => <div className="detail-row" key={name}><strong>{name}</strong><span>{detail}</span><ChevronRight size={18} /></div>)}</div></div></section>
+
+    <section className="cert-section"><div className="cert-image"><Image src="/images/certifikat.jpg" alt="CE certifikat JAS PlastikAL" fill sizes="(max-width: 800px) 100vw, 38vw" /></div><div className="cert-copy"><SectionLabel>Dokaz kvaliteta</SectionLabel><Award size={42} strokeWidth={1.4} /><h2>Certificirana<br />proizvodnja.</h2><p>CE certifikat potvrđuje da se proizvodnja PVC stolarije izvodi prema strogim kriterijima koje je propisao proizvođač.</p><div className="cert-points"><span><ShieldCheck size={19} /> Kontrolisan proces</span><span><Building2 size={19} /> Evropski sistemi</span></div></div></section>
+
+    <section className="partners-section" id="partneri"><div className="section-heading compact"><div><SectionLabel>Naši partneri</SectionLabel><h2>Kvalitet počinje<br />pravim izborom.</h2></div><p>U proizvodnji koristimo sisteme i komponente etabliranih evropskih i svjetskih proizvođača.</p></div><div className="partner-grid">{partners.map(([name, logo, href]) => <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={`${name} — partnerska stranica`}><Image src={logo} alt={name} width={180} height={80} /></a>)}</div></section>
+
+    <section className="contact-section" id="kontakt"><div className="contact-main"><SectionLabel>Pokrenimo projekat</SectionLabel><h2>Imate otvor?<br /><em>Mi imamo rješenje.</em></h2><p>Pošaljite dimenzije, skicu ili samo ideju. Naš tim će vam pomoći da odaberete odgovarajući sistem za vaš objekat.</p><div className="contact-actions"><a className="button button-light" href="mailto:jasplastikal@gmail.com?subject=Upit%20za%20ponudu%20-%20JAS%20PlastikAL">Pošalji upit <Mail size={18} /></a><a className="button button-outline-light" href="tel:+38761478480">Pozovi nas <Phone size={18} /></a></div></div><div className="contact-info"><div><MapPin size={20} /><span><small>Adresa</small>Ul. Bosanska bb<br />74250 Maglaj, BiH</span></div><div><Phone size={20} /><span><small>Prodaja i informacije</small><a href="tel:+38761478480">Hodžić Asim · +387 61 478 480</a><a href="tel:+38762683524">Cvrčak Ajdin · +387 62 683 524</a><a href="tel:+38762235112">Cvrčak Saud · +387 62 235 112</a></span></div><div><Mail size={20} /><span><small>Email</small><a href="mailto:info@jasplastikal.com">info@jasplastikal.com</a><a href="mailto:jasplastikal@gmail.com">jasplastikal@gmail.com</a></span></div></div><div className="map-wrap"><iframe title="JAS PlastikAL lokacija u Maglaju" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1120.140899342273!2d18.09715350001663!3d44.55545778645103!3m2!1i1024!1i768!4f13.1!3m3!1m2!1s0x475e8faf56522835%3A0xe250e17e29840165!2sJAS%20plastikAL%20doo!5e0!3m2!1sen!2sba!4v1694257369250!5m2!1sen!2sba" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></section>
+
+    <footer className="site-footer"><BrandMark light /><p>Proizvodnja i ugradnja PVC i AL sistema iz Maglaja za objekte širom Evrope.</p><div><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="/JASPlastikAL-katalog-2024.pdf" download>Katalog</a><a href="#kontakt">Kontakt</a></div><small>© {new Date().getFullYear()} JAS PlastikAL d.o.o. Sva prava zadržana.</small></footer>
+  </main>;
 }
