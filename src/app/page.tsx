@@ -57,6 +57,6 @@ export default function Home() {
 
     <a className="mobile-call" href="tel:+38761478480"><Phone size={17} /> Pozovi nas</a>
 
-    <footer className="site-footer"><BrandMark light /><p>Proizvodnja i ugradnja PVC i AL sistema iz Maglaja za objekte širom Evrope.</p><div><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="/JASPlastikAL-katalog-2024.pdf" download>Katalog</a><a href="#kontakt">Kontakt</a></div><small>© {new Date().getFullYear()} JAS PlastikAL d.o.o. Sva prava zadržana.</small></footer>
+    <footer className="site-footer"><BrandMark light /><p>Proizvodnja i ugradnja PVC i AL sistema iz Maglaja za objekte širom Evrope.</p><div><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="/JASPlastikAL-katalog-2024.pdf" download>Katalog</a><a href="#kontakt">Kontakt</a></div><div className="footer-bottom"><small>© {new Date().getFullYear()} JAS PlastikAL d.o.o. Sva prava zadržana.</small><small className="footer-credit">Dizajn i izrada web stranice <strong>H-Cyber</strong></small></div></footer>
   </main>;
 }
