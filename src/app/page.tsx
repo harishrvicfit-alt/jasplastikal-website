@@ -26,7 +26,7 @@ const offer = [
 ];
 
 const doors = [["IDEAL 4000", "PVC · 5 komora · 70 mm dubine · standardno vidno krilo"], ["IDEAL 7000", "PVC · 6 komora · 85 mm dubine · standardno ili skriveno krilo"], ["EMERUS PE85tt", "AL · dvije zone dihtovanja · 77 mm dubine · standardno vidno krilo"], ["EMERUS E90tt", "AL · tri zone dihtovanja · 90 mm dubine · skriveno krilo · ekskluzivna vrata"]];
-const sliders = [["PVC smart-slide", "140 mm dubine · dvoslojno/troslojno staklo · Uw do 1,0 W/m²K"], ["PVC HST 85", "200 mm dubine · dvoslojno/troslojno staklo · Ud 0,95 W/m²K"], ["AL PK150tt", "Podizno-klizni sistem sa PTM · 150 mm dubine"], ["AL E560S", "Bez PTM · 2–4 staze · 2–8 krila"], ["AL E65Stt", "Sa PTM · 2–3 staze · 2–6 krila"]];
+const sliders = [["PVC smart-slide", "140 mm dubine · dvoslojno/troslojno staklo · Uw do 1,0 W/m²K"], ["PVC HST 85", "200 mm dubine · dvoslojno/troslojno staklo · Uw 0,95 W/m²K"], ["AL PK150tt", "Podizno-klizni sistem sa PTM · 150 mm dubine"], ["AL E560S", "Bez PTM · 2–4 staze · 2–8 krila"], ["AL E65Stt", "Sa PTM · 2–3 staze · 2–6 krila"]];
 const partners = [["aluplast", "/images/aluplast.png", "https://www.aluplast.net/eng-int/"], ["G-U", "/images/GU.png", "https://www.g-u.com/en/HR.html"], ["FEAL", "/images/feal.png", "https://feal.ba/en/"], ["EMINAL", "/images/eminal.png", "https://www.eminal.ba/"], ["EXTE", "/images/exte-logo.jpeg", "https://www.exte.de/en/"], ["Somfy", "/images/somfy-logo.svg", "https://www.somfy.com/"], ["Termoglas", "/images/termoglas.png", "https://www.termoglas.ba/"], ["Pavković paneli", "/images/pavkov.png", "https://www.pavkovic-paneli.com/"]];
 const markets = ["Bosna i Hercegovina", "Hrvatska", "Austrija", "Njemačka", "Luksemburg", "Holandija"];
 
