@@ -179,14 +179,11 @@ button{color:inherit}
 }
 
 /* Product cutouts supplied for the presentation grid */
-.offer-card-product .offer-image{inset:16px 16px 116px;background:linear-gradient(145deg,#f7f8f6,#e5e9e6);opacity:.78}
-.offer-card-product .offer-image img{object-fit:contain;padding:28px;filter:saturate(.78) contrast(1.06)}
-.offer-card-product:hover .offer-image{opacity:1}
-.offer-card-product:hover .offer-image img{filter:saturate(1) contrast(1.03)}
+.offer-card-product .offer-image{inset:0;background:#dfe3e0;opacity:.58}
+.offer-card-product .offer-image img{object-fit:cover;object-position:center 35%;padding:0;filter:grayscale(.28) saturate(.72) contrast(1.08) brightness(.84)}
+.offer-card-product:hover .offer-image{opacity:.9}
+.offer-card-product:hover .offer-image img{filter:grayscale(0) saturate(1) contrast(1.04) brightness(.92)}
 .partner-grid img[alt="Somfy"]{max-width:122px}
 .partner-grid img[alt="EXTE"]{max-width:150px}
 
-@media(max-width:760px){
-  .offer-card-product .offer-image{inset:14px 14px 108px}
-  .offer-card-product .offer-image img{padding:22px}
-}
+@media(max-width:760px){.offer-card-product .offer-image img{object-position:center 32%}}
