@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: { title: "JAS PlastikAL — prostor počinje dobrim okvirom", description: "Precizna proizvodnja i pouzdana ugradnja PVC i AL sistema.", type: "website", locale: "bs_BA", images: [{ url: "/images/Zimski_vrt.jpg", width: 1437, height: 1078, alt: "JAS PlastikAL zimski vrt" }] },
   twitter: { card: "summary_large_image", title: "JAS PlastikAL — prostor počinje dobrim okvirom", description: "Precizna proizvodnja i pouzdana ugradnja PVC i AL sistema.", images: ["/images/Zimski_vrt.jpg"] },
   robots: { index: true, follow: true },
-  icons: { icon: "/images/logojas.png", apple: "/images/logojas.png" },
+  icons: { icon: "/images/logojas.png", shortcut: "/images/logojas.png", apple: "/images/logojas.png" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#111513" };
