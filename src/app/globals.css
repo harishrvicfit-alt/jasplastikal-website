@@ -79,6 +79,11 @@ button{color:inherit}
 .contact-form textarea{resize:vertical;min-height:92px}
 .contact-form button{min-height:50px;border:0;background:var(--mint);color:var(--ink);display:flex;align-items:center;justify-content:center;gap:12px;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
 .contact-form button:hover{background:#fff;transform:translateY(-2px)}
+.contact-form button:disabled{cursor:wait;opacity:.72;transform:none}
+.form-honeypot{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;clip-path:inset(50%)}
+.form-feedback{margin:0;padding:12px 14px;display:flex;align-items:flex-start;gap:9px;border:1px solid rgba(255,255,255,.12);font-size:11px;line-height:1.55}
+.form-feedback svg{flex:0 0 auto;margin-top:1px}.form-feedback.success{border-color:rgba(83,196,178,.42);background:rgba(83,196,178,.09);color:#bcebe3}.form-feedback.error{border-color:rgba(255,125,110,.38);background:rgba(255,125,110,.08);color:#ffc2ba}
+.form-spinner{animation:form-spin .8s linear infinite}@keyframes form-spin{to{transform:rotate(360deg)}}
 .contact-form>small{color:#737b75;font-size:9px;line-height:1.5}
 .contact-side .contact-info{padding:0;border:0;display:grid;grid-template-columns:1fr;gap:24px}
 .contact-side .contact-info span{font-size:13px}
