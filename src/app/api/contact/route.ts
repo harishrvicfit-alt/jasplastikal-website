@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { createHash } from "node:crypto";
+import { checkBotId } from "botid/server";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -100,6 +101,17 @@ export async function POST(request: Request) {
   }
   if (!isEmail(contact) && !isPhone(contact)) {
     return Response.json({ message: "Unesite ispravnu e-mail adresu ili broj telefona (7–15 cifara)." }, { status: 400 });
+  }
+
+  // Verify on the server before contacting Resend. No user-supplied bypass flags.
+  try {
+    const verification = await checkBotId({ advancedOptions: { checkLevel: "basic" } });
+    if (verification.isBot) {
+      return Response.json({ code: "BOT_BLOCKED", message: "Sigurnosna provjera nije uspjela. Osvježite stranicu i pokušajte ponovo ili nam pišite direktno na info@jasplastikal.com." }, { status: 403 });
+    }
+  } catch {
+    console.error("Contact anti-spam verification unavailable.");
+    return Response.json({ code: "BOT_CHECK_UNAVAILABLE", message: "Sigurnosna provjera trenutno nije dostupna. Pokušajte ponovo ili nam pišite na info@jasplastikal.com." }, { status: 503 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;

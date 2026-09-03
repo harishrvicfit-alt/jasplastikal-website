@@ -1,5 +1,12 @@
 // No real email is sent: all provider requests are intercepted before importing the route.
 import assert from "node:assert/strict";
+import { mock } from "node:test";
+let botMode = "human";
+mock.module("botid/server", { namedExports: { checkBotId: async (options) => {
+  assert.equal(options.advancedOptions.checkLevel, "basic");
+  if (botMode === "unavailable") throw new Error("Simulated BotID outage");
+  return { isBot: botMode === "bot", isHuman: botMode === "human" };
+} } });
 let calls = [];
 let providerMode = "success";
 globalThis.fetch = async (url, options) => {
@@ -44,6 +51,14 @@ delete process.env.CONTACT_TO_EMAIL;
 assert.equal((await POST(request(valid))).status, 503);
 assert.equal(calls.length, 0);
 process.env.CONTACT_TO_EMAIL = "delivered@resend.dev";
+for (const mode of ["bot", "unavailable"]) {
+  botMode = mode;
+  const blocked = await POST(request(valid));
+  assert.equal(blocked.status, mode === "bot" ? 403 : 503);
+  assert.equal(calls.length, 0, "Bot verification must block before sending");
+  console.log(`PASS BotID ${mode}: no email sent`);
+}
+botMode = "human";
 const result = await POST(request({ ...valid, name: "A <B>", message: "<script>alert('x')</script>" }));
 assert.equal(result.status, 200);
 assert.deepEqual(await result.json(), { ok: true });

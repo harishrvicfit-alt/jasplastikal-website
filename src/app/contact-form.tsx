@@ -98,7 +98,8 @@ export default function ContactForm() {
         {status === "success" ? <Check size={16} /> : status === "error" ? <TriangleAlert size={16} /> : null}
         {feedback}
       </p>
-      {status === "error" ? <small>Možete nam pisati i na <a href="mailto:jasplastikal@gmail.com">jasplastikal@gmail.com</a> ili nas pozvati na <a href="tel:+38761478480">+387 61 478 480</a>.</small> : null}
+      {status === "error" ? <small>Možete nam pisati i na <a href="mailto:info@jasplastikal.com">info@jasplastikal.com</a> ili nas pozvati na <a href="tel:+38761478480">+387 61 478 480</a>.</small> : null}
+      <small>Forma je zaštićena automatskom provjerom protiv spama.</small>
       <small>Vaši podaci koriste se isključivo za odgovor na ovaj upit i ne pohranjuju se na web stranici.</small>
     </form>
   );
