@@ -8,13 +8,14 @@ const brandSource = readFile(join(process.cwd(), "public/images/logojas.png"))
   .then(data => `data:image/png;base64,${data.toString("base64")}`);
 
 export async function renderBrandIcon(size: number) {
+  const source = await brandSource;
   const width = Math.round(size * 0.94);
   const height = width * 1600 / 2480;
   return new ImageResponse(
     <div style={{ width: "100%", height: "100%", background: "white", display: "flex", alignItems: "center", justifyContent: "center" }}>
       {/* ImageResponse renders plain image elements, not next/image components. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={await brandSource} alt="JAS PlastikAL" width={width} height={height} />
+      <img src={source} alt="JAS PlastikAL" width={width} height={height} />
     </div>,
     { width: size, height: size },
   );
