@@ -10,7 +10,8 @@ for (const [index, path] of paths.entries()) {
   const html = await response.text();
   assert.match(html, new RegExp(`<html[^>]+lang="${["bs", "de", "en"][index]}"`));
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${path}: exactly one H1`);
-  assert(html.includes(`<link rel="canonical" href="${canonical}${path}"`), `${path}: canonical`);
+  const canonicalHref = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  assert.equal(new URL(canonicalHref).href, new URL(`${canonical}${path}`).href, `${path}: canonical`);
   for (const lang of ["bs", "de", "en", "x-default"]) assert(html.includes(`hrefLang="${lang}"`), `${path}: hreflang ${lang}`);
   assert(!/<meta name="robots" content="[^"]*noindex/.test(html), `${path}: indexable`);
   const structured = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
