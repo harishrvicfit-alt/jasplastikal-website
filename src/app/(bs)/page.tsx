@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Award, Building2, Check, ChevronRight, Download, Factory, Globe2, Mail, MapPin, Phone, Ruler, ShieldCheck, Sparkles, ThermometerSun, Wrench } from "lucide-react";
-import ContactForm from "./contact-form";
-import MobileMenu from "./mobile-menu";
+import ContactForm from "@/app/contact-form";
+import MobileMenu from "@/app/mobile-menu";
+import LanguageLinks from "@/components/language-links";
+import { jsonLd, siteSchema } from "@/lib/seo";
 
 const productSystems = [
   { name: "IDEAL 4000", group: "PVC prozori", image: "/images/stolarija_ideal_4000.jpg", value: "Uw 1,3", specs: ["5 komora", "70 mm dubine ugradnje", "2 zone dihtovanja", "Dvoslojno termo staklo"] },
@@ -34,10 +36,9 @@ function BrandMark({ light = false }: { light?: boolean }) { return <a href="#to
 function SectionLabel({ children }: { children: React.ReactNode }) { return <p className="section-label"><span />{children}</p>; }
 
 export default function Home() {
-  const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://jasplastikal-website.vercel.app";
-  const localBusinessSchema = { "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", name: "JAS PlastikAL", foundingDate: "2017", url: siteUrl, sameAs: ["https://www.jasplastikal.com/"], email: "info@jasplastikal.com", telephone: "+38761478480", address: { "@type": "PostalAddress", streetAddress: "Bosanska bb", postalCode: "74250", addressLocality: "Maglaj", addressCountry: "BA" }, areaServed: markets };
   return <main id="top">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(siteSchema("bs", offer)) }} />
+    <LanguageLinks current="bs" />
     <a className="skip-link" href="#hero-title">Preskoči na sadržaj</a>
     <header className="site-header"><BrandMark /><nav className="desktop-nav" aria-label="Glavna navigacija"><a href="#o-nama">O nama</a><a href="#ponuda">Ponuda</a><a href="#sistemi">Sistemi</a><a href="#partneri">Partneri</a></nav><a className="header-cta" href="#kontakt">Zatraži ponudu <ArrowDownRight size={18} /></a><MobileMenu /></header>
 
