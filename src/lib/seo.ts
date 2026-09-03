@@ -4,6 +4,14 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://www.jasplastikal.com";
 export const languageUrls = { bs: `${SITE_URL}/`, de: `${SITE_URL}/de`, en: `${SITE_URL}/en`, "x-default": `${SITE_URL}/` };
 export const socialImage = { url: `${SITE_URL}/images/Zimski_vrt.jpg`, width: 1437, height: 1078, alt: "JAS PlastikAL — zimski vrt / Wintergarten / winter garden" };
+export const brandIcons: Metadata["icons"] = {
+  icon: [
+    { url: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48 256x256" },
+    { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+  ],
+  shortcut: "/favicon.ico",
+  apple: { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+};
 
 export function pageMetadata(title: string, description: string, locale: "bs" | "de" | "en"): Metadata {
   const url = languageUrls[locale];
@@ -16,7 +24,7 @@ export function pageMetadata(title: string, description: string, locale: "bs" | 
     openGraph: { title, description, url, siteName: "JAS PlastikAL", type: "website", locale: { bs: "bs_BA", de: "de_DE", en: "en_GB" }[locale], images: [socialImage] },
     twitter: { card: "summary_large_image", title, description, images: [socialImage.url] },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-    icons: { icon: "/images/logojas.png", shortcut: "/images/logojas.png", apple: "/images/logojas.png" },
+    icons: brandIcons,
   };
 }
 
